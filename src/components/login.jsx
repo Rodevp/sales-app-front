@@ -19,7 +19,10 @@ function Login() {
             body: JSON.stringify(data)
         })
         .then( res => res.json() )
-        .then( data => console.log(data) )
+        .then( data => {
+            localStorage.setItem('id', data.token )
+            localStorage.setItem('user', JSON.stringify(data.user) )
+        })
         .catch( error => console.error(error) )
 
     }
