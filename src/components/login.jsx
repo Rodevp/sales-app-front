@@ -1,22 +1,17 @@
 import { useState } from 'react'
-import uuid from 'uuid-random'
 
-function Register() {
+function Login() {
 
-    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const submitData = (e) => {
         e.preventDefault()
         const data = {
-            id: uuid(),
             email,
-            name,
             password,
-            role: 'admin'
         }
-        fetch('http://localhost:3001/api/v1/auth/register', {
+        fetch('http://localhost:3001/api/v1/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,17 +32,13 @@ function Register() {
                 <input type="email" onChange={(e) => { setEmail(e.target.value) } }/>
             </div>
             <div>
-                <label htmlFor="">Nombre</label>
-                <input type="text" onChange={(e) => { setName(e.target.value) } }/>
-            </div>
-            <div>
                 <label htmlFor="">Contraseña</label>
                 <input type="password" onChange={(e) => { setPassword(e.target.value) } } />
             </div>
-            <input type="submit" value="Registrar" />
+            <input type="submit" value="Entrar" />
         </form>
     </div>
   )
 }
 
-export default Register
+export default Login

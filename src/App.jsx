@@ -1,3 +1,4 @@
+import Login from "./components/login"
 import Register from "./components/register"
 
 function App() {
@@ -5,6 +6,7 @@ function App() {
   return (
     <div className="App">
         <Register />
+        <Login />
     </div>
   )
 }
