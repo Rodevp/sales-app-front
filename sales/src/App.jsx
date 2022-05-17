@@ -10,6 +10,8 @@ import { loginState } from './atoms/login'
 import { role } from './atoms/role'
 import { useAtom } from 'jotai'
 import TopSellers from './components/seller/top-sellers'
+import Sales from './components/sales/sales'
+import GetSales from './components/sales/get-sales'
 
 function App() {
 
@@ -42,6 +44,15 @@ function App() {
 
         <Route path='/seller' element={
           validateUserSeller ? <h1>seller</h1> : <h1>No tienes permisos</h1>
+        } />
+
+
+        <Route path='/seller/add-sale' element={
+          validateUserSeller ? <Sales /> : <h1>No tienes permisos</h1>
+        } />
+
+        <Route path='/seller/list-sales' element={
+          validateUserSeller ? <GetSales /> : <h1>No tienes permisos</h1>
         } />
 
       </Routes>

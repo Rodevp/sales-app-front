@@ -16,7 +16,9 @@ function GetSales() {
             }
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+          setSales(data)
+        })
         .catch(error => console.error(error))
 
 
@@ -24,7 +26,17 @@ function GetSales() {
 
 
   return (
-    <div>get-sales</div>
+    <div>
+      {
+        
+        sales === undefined
+          ? <h1>cargando...</h1>
+          : sales.map(sale => (
+            <p key={sale.id}>{sale.name}</p>
+          )) 
+      
+      }
+    </div>
   )
 
 }

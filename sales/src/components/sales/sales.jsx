@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Sales() {
 
     const [name, setName] = useState('')
     const [totalSales, _] = useState(0)
     const user = JSON.parse( localStorage.getItem('user') )
+
+    const navigate = useNavigate()
 
     const submitData = (e) => {
         e.preventDefault()
@@ -14,7 +17,7 @@ function Sales() {
             id_seller: user.id,
         }
         console.log(data)
-        fetch('http://localhost:3001/api/v1/product', {
+        fetch('http://localhost:3001/api/v1/sales', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,14 +25,18 @@ function Sales() {
             },
             body: JSON.stringify(data)
         })
-        .then( res => res.json() )
-        .then( data => console.log(data) )
+        .then( res => {
+            if(res.status === 201) {
+                navigate('/seller/list-sales')
+            }
+        } )
         .catch( error => console.error(error) )
 
     }
 
   return (
     <div>
+        <h2>Agreagr Venta</h2>
         <form onSubmit={submitData}>
             <div>
                 <label htmlFor="">Nombre Venta</label>
