@@ -9,11 +9,14 @@ import ListSeller from './components/seller/list-sellers'
 import { loginState } from './atoms/login'
 import { role } from './atoms/role'
 import { useAtom } from 'jotai'
+
 import TopSellers from './components/seller/top-sellers'
 import Sales from './components/sales/sales'
 import GetSales from './components/sales/get-sales'
 import GetProducts from './components/product/list-products'
 import Product from './components/product/product'
+import HomeSeller from './components/seller/home-seller'
+import HomeSales from './components/sales/home-sales'
 
 function App() {
 
@@ -30,6 +33,10 @@ function App() {
         <Route path='/register' element={<Register />} />
 
         <Route path='/admin' element={
+          validateUserAdmin ? <HomeSales /> : <h1>No tienes permisos de administrador</h1>
+        } />
+
+      <Route path='/admin/add-seller' element={
           validateUserAdmin ? <AddSeller /> : <h1>No tienes permisos de administrador</h1>
         } />
 
@@ -42,7 +49,7 @@ function App() {
         } />
 
         <Route path='/seller' element={
-          validateUserSeller ? <h1>seller</h1> : <h1>No tienes permisos</h1>
+          validateUserSeller ? <HomeSeller /> : <h1>No tienes permisos</h1>
         } />
 
         <Route path='/seller/add-sale' element={
