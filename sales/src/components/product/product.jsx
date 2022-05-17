@@ -4,7 +4,7 @@ function Product() {
 
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
-    const user = JSON.parse( localStorage.getItem('user') )
+    const user = JSON.parse(localStorage.getItem('user'))
 
     const submitData = (e) => {
         e.preventDefault()
@@ -23,27 +23,42 @@ function Product() {
             },
             body: JSON.stringify(data)
         })
-        .then( res => res.json() )
-        .then( data => console.log(data) )
-        .catch( error => console.error(error) )
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error))
 
     }
 
-  return (
-    <div>
-        <form onSubmit={submitData}>
-            <div>
-                <label htmlFor="">Nombre</label>
-                <input type="text" onChange={(e) => { setName(e.target.value) } }/>
-            </div>
-            <div>
-                <label htmlFor="">Precio</label>
-                <input type="text" onChange={(e) => { setPrice( Number(e.target.value) ) } }/>
-            </div>
-            <input type="submit" value="Agregar producto" />
-        </form>
-    </div>
-  )
+    return (
+        <div>
+            <h1 className="form-outline mt-4">
+                Agregar producto
+            </h1>
+            <form onSubmit={submitData} className="form-outline mt-4">
+                <div className="form-outline mb-4">
+                    <input
+                        type="email"
+                        id="form2Example1"
+                        className="form-control"
+                        onChange={(e) => { setName(e.target.value) }}
+                    />
+                    <label className="form-label" htmlFor="form2Example1">Nombre Producto</label>
+                </div>
+
+                <div className="form-outline mb-4">
+                    <input
+                        type="text"
+                        id="form2Example2"
+                        className="form-control"
+                        onChange={(e) => { setPrice(Number(e.target.value)) }}
+                    />
+                    <label className="form-label" htmlFor="form2Example2">Precio</label>
+                </div>
+
+                <button type="submit" className="btn btn-primary btn-block mb-4">Agregar</button>
+            </form>
+        </div>
+    )
 }
 
 export default Product

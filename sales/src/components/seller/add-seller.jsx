@@ -30,10 +30,10 @@ function AddSeller() {
         })
         .then( res => {
             if(res.status === 201) {
-                navigate('/list-sellers')
+                navigate('/admin/list-sellers')
             }
         } )
-        .catch( error => console.error(error) )
+        .catch( error => console.error(error.message) )
 
     }
 
