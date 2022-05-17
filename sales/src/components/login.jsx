@@ -86,7 +86,7 @@ function Login() {
                     <label className="form-label" htmlFor="form2Example2">Contraseña</label>
                 </div>
 
-                <button type="button" className="btn btn-primary btn-block mb-4">Entrar</button>
+                <button type="submit" className="btn btn-primary btn-block mb-4">Entrar</button>
 
                 <div className="text-center">
                     ¿No tienes cuenta? ve a: <Link to='/register' >Registrarse</Link>

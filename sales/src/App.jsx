@@ -33,11 +33,11 @@ function App() {
           validateUserAdmin ? <AddSeller /> : <h1>No tienes permisos de administrador</h1>
         } />
 
-        <Route path='/list-sellers' element={
+        <Route path='/admin/list-sellers' element={
           validateUserAdmin ? <ListSeller /> : <h1>No tienes permisos de administrador</h1>
         } />
 
-        <Route path='/top-sellers' element={
+        <Route path='/admin/top-sellers' element={
           validateUserAdmin ? <TopSellers /> : <h1>No tienes permisos de administrador</h1>
         } />
 
