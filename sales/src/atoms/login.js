@@ -1,3 +1,5 @@
 import { atom } from 'jotai'
 
-export const loginState = atom(false || localStorage.getItem('id') )
+const isLogin = localStorage.getItem('id') !== null ? true : false
+
+export const loginState = atom(isLogin)

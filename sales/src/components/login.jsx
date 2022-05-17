@@ -74,7 +74,7 @@ function Login() {
             <input type="submit" value="Entrar" />
         </form>
         <div>
-            ¿No tienes cuenta? ve a: <Link to='/register' >Registrarce</Link>
+            ¿No tienes cuenta? ve a: <Link to='/register' >Registrarse</Link>
         </div>
     </div>
   )

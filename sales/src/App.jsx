@@ -15,17 +15,20 @@ function App() {
 
   console.log(roleUser, isLogin)
   
+  const validateUserAdmin = isLogin && roleUser === 'admin'
+  const validateUserSeller = isLogin && roleUser === 'seller'
+
   return (
     <div className="App">
       <Routes>
         <Route path='/'  element={<Login />}  /> 
         <Route path='/register'  element={<Register />}  /> 
         {
-          (roleUser && isLogin) && roleUser === 'admin'
-            ?  <Route path='/admin'  element={<h1>admin</h1>}/>
-            : <Route  path='/seller' element={<h1>seller</h1>}/>
+          validateUserAdmin  && <Route path='/admin'  element={<h1>admin</h1>}/>
         }
-
+        {
+          validateUserSeller && <Route  path='/seller' element={<h1>seller</h1>}/>
+        }
       </Routes>
     </div>
   )
