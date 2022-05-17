@@ -1,8 +1,9 @@
-import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
+//components
 import Login from './components/login'
 import Register from './components/register'
+import AddSeller from './components/seller/add-seller'
 
 import {loginState} from './atoms/login'
 import {role} from './atoms/role'
@@ -24,10 +25,14 @@ function App() {
         <Route path='/'  element={<Login />}  /> 
         <Route path='/register'  element={<Register />}  /> 
         {
-          validateUserAdmin  && <Route path='/admin'  element={<h1>admin</h1>}/>
+          <Route path='/admin'  element={ 
+            validateUserAdmin ? <AddSeller /> : <h1>No tienes permisos de administrador</h1>
+          }/>
         }
         {
-          validateUserSeller && <Route  path='/seller' element={<h1>seller</h1>}/>
+          <Route  path='/seller' element={
+            validateUserSeller ? <h1>seller</h1> : <h1>No tienes permisos</h1>
+          }/>
         }
       </Routes>
     </div>

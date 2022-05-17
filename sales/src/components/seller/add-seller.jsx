@@ -33,6 +33,7 @@ function AddSeller() {
 
   return (
     <div>
+        <h2>Agregar Vendedor</h2>
         <form onSubmit={submitData}>
             <div>
                 <label htmlFor="">Nombre</label>
