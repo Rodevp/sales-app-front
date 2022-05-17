@@ -13,15 +13,24 @@ function ListSeller() {
             },
         })
         .then( res => res.json() )
-        .then( data => console.log(data) )
+        .then( data => {
+            const sellers = data.filter(user => user !== null)
+            setSellers(sellers)
+        } )
         .catch( error => console.error(error) )
 
     }, [])
     
-
+    console.log(sellers)
   return (
     <div>
-        list sellers
+        {
+            sellers === undefined 
+                ? <h2>Cargando..</h2> 
+                : sellers.map(seller => (
+                    <p>{seller.email}</p>
+                ))
+        }
     </div>
   )
 }

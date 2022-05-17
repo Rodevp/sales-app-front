@@ -1,11 +1,14 @@
 import { useState } from 'react'
 import uuid from 'uuid-random'
+import { useNavigate } from 'react-router-dom'
 
 function AddSeller() {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigate = useNavigate()
 
     const submitData = (e) => {
         e.preventDefault()
@@ -25,8 +28,11 @@ function AddSeller() {
             },
             body: JSON.stringify(data)
         })
-        .then( res => res.json() )
-        .then( data => console.log(data) )
+        .then( res => {
+            if(res.status === 201) {
+                navigate('/list-sellers')
+            }
+        } )
         .catch( error => console.error(error) )
 
     }
