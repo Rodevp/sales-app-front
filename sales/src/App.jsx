@@ -20,13 +20,11 @@ function App() {
   const [isLogin,] = useAtom(loginState)
   const [roleUser,] = useAtom(role)
 
-  console.log(roleUser, isLogin)
-
   const validateUserAdmin = isLogin && roleUser === 'admin'
   const validateUserSeller = isLogin && roleUser === 'seller'
 
   return (
-    <div className="App">
+    <div className="container">
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
