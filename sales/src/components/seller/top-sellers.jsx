@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 
-function ListSeller() {
+function TopSellers() {
 
-    const [sellers, setSellers] = useState([])
+    const [sales, setSales] = useState([])
 
     useEffect(() => {
         
-        fetch('http://localhost:3001/api/v1/admin', {
+        fetch('http://localhost:3001/api/v1/admin/sales', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('id')}`
@@ -14,25 +14,26 @@ function ListSeller() {
         })
         .then( res => res.json() )
         .then( data => {
-            const sellers = data.filter(user => user !== null)
-            setSellers(sellers)
+            const sales = data.filter(sale => sale !== null)
+            setSales(sales)
         } )
         .catch( error => console.error(error) )
 
     }, [])
     
-    console.log(sellers)
+    console.log(sales)
+
   return (
     <div>
         {
-            sellers === undefined 
+            sales === undefined 
                 ? <h2>Cargando..</h2> 
-                : sellers.map(seller => (
-                    <p key={seller.id}>{seller.email}</p>
+                : sales.map(sale => (
+                    <p key={sale.id}>{sale.name}</p>
                 ))
         }
     </div>
   )
 }
 
-export default ListSeller
+export default TopSellers
